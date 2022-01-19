@@ -1,3 +1,4 @@
+import 'package:chat_tiempo_real/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,8 +30,9 @@ class _Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        
         child: Column(children: [
-          Image(image: AssetImage('assets/tag-logo.png')),
+          Image(image: AssetImage('assets/tag-logo.png'),height: 170,),
           SizedBox(height: 20,),
           Text('Mensseger',style: TextStyle(fontSize: 30,),)
         ],),
@@ -50,11 +52,14 @@ class __FormState extends State<_Form> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
+      margin: EdgeInsets.only(top: 40),
+      padding: EdgeInsets.symmetric(horizontal: 50),
       child: Column(children: [
-        TextField(),
-        TextField(),
-        RaisedButton(
-          onPressed: (){},)
+      CustomInput(),
+      CustomInput()
+        
+       
     ],),
       
     );
