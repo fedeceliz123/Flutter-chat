@@ -1,82 +1,69 @@
-import 'package:chat_tiempo_real/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
 
+import 'package:chat_tiempo_real/widgets/btn_primary.dart';
+import 'package:chat_tiempo_real/widgets/custom_input.dart';
+import 'package:chat_tiempo_real/widgets/custom_labels.dart';
+import 'package:chat_tiempo_real/widgets/custom_logo.dart';
 
 class LoginPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF2F2F2),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _Logo(),
-            _Form(),
-            _Labes(),
-            Text('Termino y condiciones de uso',style: TextStyle(fontWeight: FontWeight.w200),)
-      
-        ],),
-      )
-   );
-  }
-}
-
-class _Logo extends StatelessWidget {
-  const _Logo({ Key? key }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        
-        child: Column(children: [
-          Image(image: AssetImage('assets/tag-logo.png'),height: 170,),
-          SizedBox(height: 20,),
-          Text('Mensseger',style: TextStyle(fontSize: 30,),)
-        ],),
-      ),
-    );
+        backgroundColor: Color(0xffF2F2F2),
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Logo(),
+              _Form(),
+              Labes(),
+              Text(
+                'Termino y condiciones de uso',
+                style: TextStyle(fontWeight: FontWeight.w200),
+              )
+            ],
+          ),
+        ));
   }
 }
 
 class _Form extends StatefulWidget {
- 
-
   @override
   __FormState createState() => __FormState();
 }
 
 class __FormState extends State<_Form> {
+  final emailCtrl = TextEditingController();
+  final passCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       margin: EdgeInsets.only(top: 40),
       padding: EdgeInsets.symmetric(horizontal: 50),
-      child: Column(children: [
-      CustomInput(),
-      CustomInput()
-        
-       
-    ],),
-      
-    );
-  }
-}
-
-class _Labes extends StatelessWidget {
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Text('¿No tienes cuenta?',style: TextStyle(color: Colors.black54,fontSize: 15,fontWeight: FontWeight.w300),),
-        SizedBox(height: 10,),
-        Text('Crea una ahora!', style: TextStyle(color: Colors.blue.shade600,fontSize: 18,fontWeight: FontWeight.bold),)
-      ],),
+      child: Column(
+        children: [
+          CustomInput(
+            icon: Icons.email_outlined,
+            placeholder: 'Email',
+            keyBoardType: TextInputType.emailAddress,
+            textController: emailCtrl,
+          ),
+          CustomInput(
+            icon: Icons.password_outlined,
+            placeholder: 'Password',
+            keyBoardType: TextInputType.text,
+            textController: passCtrl,
+            isPassword: true,
+          ),
+          BtnPrimary(
+            text: 'Ingrese',
+            onPressed: () {
+              print(passCtrl);
+              print(emailCtrl);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
