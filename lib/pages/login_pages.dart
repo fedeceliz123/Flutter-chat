@@ -72,8 +72,7 @@ class __FormState extends State<_Form> {
             
             text: 'Ingrese',
             Click: (){
-              print(emailCtrl.text);
-              print(passCtrl.text);
+              Navigator.pushReplacementNamed(context, 'usuario');
             },
            
             
