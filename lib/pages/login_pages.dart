@@ -11,23 +11,32 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color(0xffF2F2F2),
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Logo(),
-              _Form(),
-              Labes(),
-              Text(
-                'Termino y condiciones de uso',
-                style: TextStyle(fontWeight: FontWeight.w200),
-              )
-            ],
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              height: MediaQuery.of(context).size.height*0.9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Logo(titulo: 'Mensseger',),
+                  _Form(),
+                  Labes(ruta: 'register',text: 'Crea una ahora!',subText: '¿No tienes cuenta?',),
+                  Text(
+                    'Termino y condiciones de uso',
+                    style: TextStyle(fontWeight: FontWeight.w200),
+                  )
+                ],
+              ),
+            ),
           ),
         ));
   }
 }
 
 class _Form extends StatefulWidget {
+
+
+
   @override
   __FormState createState() => __FormState();
 }
@@ -35,6 +44,9 @@ class _Form extends StatefulWidget {
 class __FormState extends State<_Form> {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
+
+   
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,15 +67,21 @@ class __FormState extends State<_Form> {
             textController: passCtrl,
             isPassword: true,
           ),
+          
           BtnPrimary(
+            
             text: 'Ingrese',
-            onPressed: () {
-              print(passCtrl);
-              print(emailCtrl);
+            Click: (){
+              print(emailCtrl.text);
+              print(passCtrl.text);
             },
+           
+            
           ),
         ],
       ),
     );
   }
 }
+
+ 
