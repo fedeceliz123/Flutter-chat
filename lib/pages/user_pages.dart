@@ -83,7 +83,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
         width: 10,
         height: 10,
         decoration: BoxDecoration(
-            color: usuario.online ? Colors.green : Colors.green,
+            color: usuario.online ? Colors.green : Colors.red,
             borderRadius: BorderRadius.circular(100)),
       ),
     );
